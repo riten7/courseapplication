@@ -1,38 +1,106 @@
+@import '~antd/dist/antd.css';
+body {
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  color: #888585;
+  line-height: 24px;
+}
+body {
+  font-size: 14px;
+  background-color: #292727;
+}
 .App {
+  text-align: left;
+}
+.courseSearch {
+  background-color: #3c3838;
+  padding: 24px;
+  min-height: 160px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+.search-form {
+  display: flex;
+  max-width: 65%;
+  margin: 0 auto;
+  width: 100%;
+}
+.search-form .ant-col:first-child {
+  width: 100%;
+}
+.search-form .ant-col:last-child {
+  width: 150px;
+}
+.search-form .ant-col:last-child .addCourseBtn {
+  min-height: auto;
+  margin: 0;
+  background-color: #708a15;
+  font-size: 32px;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+.search-form .ant-col:first-child input,
+.search-form .ant-col:last-child button{
+  border: none;
+}
+.search-form .ant-col:first-child input:focus,
+.search-form .ant-col:last-child button:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+.search-form .ant-col:first-child p{
+  text-align: left;
+  font-size: 16px;
+  color: #888585;
+  padding: 10px 0 0 20px;
+  margin: 0;
+  font-weight: 300;
+}
+.search-form .ant-col:first-child input:focus{
+  background-color: #fff;
+  color: #696565;
+}
+.courseSearch .searchInput {
+  background-color: #696565;
+  color: #f2e9e1;
+  min-height: 60px;
+  border-radius: 30px;
+  padding: 0px 30px;
+  font-size: 18px;
+  font-weight: 300;
+}
+.ant-btn {
+  margin: 2px;
+}
+.gutter-row {
+  padding: 12px;
+}
+
+.card-body {
+  padding: 10px 16px;
+}
+.card-body p {
+  color: #999;
+}
+.ant-card-body {
+  padding: 10px;
+  background-color: #708a14;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ant-card-body .ant-card-meta-title,
+.ant-card-body .ant-card-meta-description {
+    color: #f2e9e1;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ant-card-meta-title{
+  font-weight: 900;
+  font-size: 14px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.ant-card-meta-title ~.ant-card-meta-description{
+  font-size: 12px;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ant-card-cover img {
+    height: 300px;
 }
