@@ -7,7 +7,7 @@ import {
 
 const initialData = {
   status: 'default',
-  movies: {}
+  course: {}
 };
 
 
