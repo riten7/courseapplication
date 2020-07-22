@@ -6,6 +6,7 @@ import SearchFilter from './SearchFilter';
 import CourseListItem from './CourseListItem';
 import { getFilteredList } from './../utils/filter';
 import { FileSearchOutlined } from '@ant-design/icons';
+import ErrorMessage from './ErrorMessage';
 
 const CourseList = () => {
   const dispatch = useDispatch();
@@ -21,19 +22,22 @@ const CourseList = () => {
   }, [dispatch]);
 
   return (
-    <div className="course-container">
+    <>
       <Row className="courseSearch">
         <SearchFilter />
       </Row>
-      {status === 'completed' ?
-        <Row className="courseList">
-          {courseList && courseList.length > 0 ? courseList.map(item => (
-            <CourseListItem key={item._id} course={item} />
-          )) : <div className="noCourseFound"><FileSearchOutlined /><p>No Course Found</p></div>}
-        </Row>
-        : <Spin size="large" />
-      }
-    </div>
+      <Spin className="spinner" spinning={status === 'loading'}>
+        {status === 'completed' &&
+          <Row className="courseList">
+            {courseList && courseList.length > 0 ? courseList.map(item => (
+              <CourseListItem key={item._id} course={item} />
+            )) : <div className="noCourseFound"><FileSearchOutlined /><p>No Course Found</p></div>}
+          </Row>
+          // : <Spin size="large" />
+        }
+        {status === 'error' && <ErrorMessage title="Something went wrong. Please try again later!"/>}
+      </Spin>
+    </>
   )
 }
 

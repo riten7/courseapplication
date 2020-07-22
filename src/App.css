@@ -10,7 +10,10 @@ body {
   background-color: #d9d9d9;
 }
 .App {
-  text-align: left;
+  text-align: center;
+}
+.spinner {
+  padding: 15%
 }
 .courseSearch {
   background-color: #3c3838;
@@ -72,16 +75,13 @@ body {
   font-size: 18px;
   font-weight: 300;
 }
-
 .courseDetail .addFileBtn {
   float: right;
   margin-top: 0 !important; 
 }
-
 .actions-course {
   margin-top: 30px;
 }
-
 .courseSearch .addCourseBtn,
 .courseDetail .editCourseBtn,
 .courseDetail .deleteCourseBtn,
@@ -94,7 +94,6 @@ body {
   margin: 0 12px;
   width: 25%;
 }
-
 .courseDetail-info > * {
   color: #f2e9e1;
   text-align: left;
@@ -184,12 +183,19 @@ body {
   color: #f2e9e1;
   text-align: left;
 }
-
 .upload-actions {
   text-align: center;
   margin-top: 12px;
 }
-
 .ant-card-cover img {
     height: 250px;
+}
+.courseError {
+  padding: 15%;
+}
+.courseError .ant-result-icon > .anticon {
+  font-size: 30px;
+}
+.courseError .ant-result-title {
+  font-size: 14px;
 }

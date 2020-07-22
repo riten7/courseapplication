@@ -1,11 +1,12 @@
 import React from 'react';
-import { Modal, Upload, Form, Button, Alert, message } from 'antd';
+import { Modal, Upload, Form, Button, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { checkForDuplicates } from '../utils/filter';
+import AlertMessage from './AlertMessage';
 
 const UploadFile = (props) => {
   const [error, setError] = React.useState(false);
-  const [selectedFiles, setSelectedFiles] = React.useState([{}]);
+  const [selectedFiles, setSelectedFiles] = React.useState([]);
 
   const onRemoveFile = (removedFile) => {
     const files = selectedFiles.filter(file => file.uid === removedFile.uid);
@@ -21,7 +22,7 @@ const UploadFile = (props) => {
       message.error('You can only upload maximum 5 files!');
       return;
     }
-    setError(isDuplicateFileAvailable(e.fileList))
+    setError(isDuplicateFileAvailable([...e.fileList, ...props.files]))
     setSelectedFiles(e.fileList);
     return e && e.fileList;
   };
@@ -37,19 +38,14 @@ const UploadFile = (props) => {
 
   return (
     <Modal
-      title= 'Add Files'
+      title= 'Upload Files'
       visible={props.show}
       mask={true}
       maskClosable={false}
       footer={null}
       onCancel={closePopup}>
       <Form onFinish={onFinish}>
-        {error && <Alert
-          message="Error Text"
-          description=""
-          type="error"
-          showIcon
-        />}
+        {error && <AlertMessage message="Error" description="Found duplicate files, you may already have uploaded the same files!!" />}
         <Form.Item name="uploadedFiles" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
           <Upload.Dragger name="files"
             listType="picture"
@@ -60,13 +56,13 @@ const UploadFile = (props) => {
             <p className="ant-upload-drag-icon">
               <InboxOutlined />
             </p>
-            <p className="ant-upload-text">Click or drag file to this area to upload</p>
-            <p className="ant-upload-hint">Support for a single or bulk upload.</p>
+            <p className="ant-upload-text"><strong>Drag and drop or BROWSE files</strong></p>
+            <p className="ant-upload-hint">.pdf,.pptx,.docx,.xlsx, .jpg, .jpeg, .png files only (Max size 50MB)</p>
           </Upload.Dragger>
         </Form.Item>
         <Form.Item className="upload-actions">
           <Button htmlType="button" onClick={closePopup}>Cancel</Button>
-          <Button type="primary" htmlType="submit" disabled={error || selectedFiles.length < 1}>Submit</Button>
+          <Button type="primary" htmlType="submit" disabled={error || selectedFiles.length < 1}>Done</Button>
         </Form.Item>
       </Form>
     </Modal>

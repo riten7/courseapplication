@@ -36,6 +36,10 @@ const AddCourse = (props) => {
     closePopup();
   };
 
+  const disabledDate = (current) => {
+  return current && current < moment().endOf('day');
+}
+
   return (
     <>
     <Modal
@@ -77,14 +81,14 @@ const AddCourse = (props) => {
         </Form.Item>
         <Form.Item name="date" label="Start Date"
           rules={[{ required: true }]}>
-          <DatePicker />
+          <DatePicker  disabledDate={disabledDate}/>
         </Form.Item>
         <Form.Item name="description" label="Description"
           rules={[{ required: true }]}>
           <TextArea placeholder='Description...' autoSize />
         </Form.Item>
         <Form.Item {...tailLayout}>
-          <Button htmlType="button" onClick={onResetForm}>Reset</Button>
+          <Button htmlType="button" disabled={props.course} onClick={onResetForm}>Reset</Button>
           <Button type="primary" htmlType="submit">{props.course ? 'Submit' : 'Create'}</Button>
         </Form.Item>
       </Form>

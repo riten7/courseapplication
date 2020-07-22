@@ -2,7 +2,8 @@ import {
   FETCH_START, 
   FETCH_COURSE_DETAIL, 
   UPDATE_COURSE, 
-  DELETE_COURSE 
+  DELETE_COURSE ,
+  COURSES_ERROR
 } from '../actions/actionTypes';
 
 const initialData = {
@@ -21,7 +22,10 @@ const courseActionReducer = (state = initialData, action) => {
       return { ...state, status: 'completed', isLoading: false,  course: action.payload };
     
     case DELETE_COURSE:
-      return { ...state, status: 'completed' };
+      return { ...state, status: 'delete_completed' };
+    
+    case COURSES_ERROR:
+      return { ...state, status: 'error', isLoading: false}
 
     default:
       return state;

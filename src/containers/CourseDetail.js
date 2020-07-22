@@ -8,6 +8,7 @@ import useHandlePopup from './useHandlePopup';
 import { deleteCourseFromList, getCourseDetailById, updateCourseInList } from '../actions/actionCreators';
 import { useHistory } from 'react-router-dom';
 import UploadFile from './UploadFile';
+import ErrorMessage from './ErrorMessage';
 import { columns, bytesToSize } from '../utils/utility';
 
 const CourseDetail = (props) => {
@@ -29,15 +30,14 @@ const CourseDetail = (props) => {
     if (status === 'completed') {
       showEditCourse(false);
     }
-    if (status === 'error') {
-      console.log('error occured');
+    if (status === 'delete_completed') {
+      history.push('/');
     }
   }, [status, history]);
 
   const setPopupState = (value) => showEditCourse(value);
 
   const handleCourse = (values) => {
-    console.log('course', course);
     const updatedCourse = {
       ...values,
       id: course.id,
@@ -48,10 +48,9 @@ const CourseDetail = (props) => {
 
   const closePopup = () => setDeletePopup(false);
 
-  const handleDeleteCourse = async () => {
+  const handleDeleteCourse = () => {
     closePopup();
-    await dispatch(deleteCourseFromList(courseId));
-    if (status === 'completed') { history.push('/'); }
+    dispatch(deleteCourseFromList(courseId));
   };
 
   const handleDeleteBtn = () => setDeletePopup(true);
@@ -85,7 +84,8 @@ const CourseDetail = (props) => {
       return {
         ...item,
         date: moment(item.lastModifiedDate).format('YYYY/MM/DD'),
-        size: bytesToSize(item.size)
+        size: bytesToSize(item.size),
+        type: item.type.split("/")[0]
       }
     });
     return data;
@@ -93,8 +93,8 @@ const CourseDetail = (props) => {
 
   return (
     <div className="courseDetail">
-      <Spin spinning={status !== 'completed'}>
-        {course ?
+      <Spin className="spinner" spinning={status === 'loading'}>
+        {status === 'completed' &&
         <Card>
           <Row className="courseDetail-header">
             <Col span={10}>
@@ -129,7 +129,8 @@ const CourseDetail = (props) => {
             ></Table>
           </Col>
         </Row>
-        </Card>: null}
+        </Card>}
+        {status ==='error' && <ErrorMessage title="Something went wrong. Please try again later!"/>}
       </Spin>
 
       {editCourseVisible ? <AddCourse
