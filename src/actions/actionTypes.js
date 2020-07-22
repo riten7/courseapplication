@@ -4,3 +4,8 @@ export const CLEAR_COURSES = 'CLEAR_COURSES';
 export const SHOW_ALL  = 'SHOW_ALL';
 export const SEARCH_FILTER = 'SEARCH_FILTER';
 export const COURSES_ERROR = 'COURSES_ERROR';
+
+export const ADD_COURSE = 'ADD_COURSE';
+export const FETCH_COURSE_DETAIL = 'FETCH_COURSE_DETAIL';
+export const UPDATE_COURSE = 'UPDATE_COURSE';
+export const DELETE_COURSE = 'DELETE_COURSE';

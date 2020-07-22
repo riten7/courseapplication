@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Card } from 'antd';
 import { Link } from 'react-router-dom';
-import { PLACEHOLDER_IMG } from '../actions/Constant';
 
 const CourseListItem = ({ course }) => {
   const { Meta } = Card;
@@ -11,8 +10,8 @@ const CourseListItem = ({ course }) => {
         <Link to={{ pathname: `/course/${course.id}` }}>
           <Card hoverable
             style={{ width: 240 }}
-            cover={<img src={PLACEHOLDER_IMG} className="card-img-top" alt={course.title} />}>
-            <Meta title={course.title} description={course.type} />
+            cover={<img src={require(`../utils/processed.jpeg`)} className="card-img-top" alt={course.title} />}>
+            <Meta title={course.name} description={course.type} />
           </Card>
         </Link>
       </Col>

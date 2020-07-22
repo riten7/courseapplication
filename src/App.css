@@ -7,7 +7,7 @@ body {
 }
 body {
   font-size: 14px;
-  background-color: #292727;
+  background-color: #d9d9d9;
 }
 .App {
   text-align: left;
@@ -34,7 +34,7 @@ body {
 }
 .search-form .ant-col:last-child .addCourseBtn {
   min-height: auto;
-  margin: 0;
+  margin: 0 10px;
   background-color: #708a15;
   font-size: 32px;
   border-radius: 50%;
@@ -72,13 +72,44 @@ body {
   font-size: 18px;
   font-weight: 300;
 }
+
+.courseDetail .addFileBtn {
+  float: right;
+  margin-top: 0 !important; 
+}
+
+.actions-course {
+  margin-top: 30px;
+}
+
+.courseSearch .addCourseBtn,
+.courseDetail .editCourseBtn,
+.courseDetail .deleteCourseBtn,
+.courseDetail .goBackBtn,
+.courseDetail .addFileBtn {
+  background-color: #708b16;
+  color: #f2e9e1;
+  border-radius: 0.5em;
+  min-height: 20px;
+  margin: 0 12px;
+  width: 25%;
+}
+
+.courseDetail-info > * {
+  color: #f2e9e1;
+  text-align: left;
+  margin: 10px;
+}
 .ant-btn {
   margin: 2px;
 }
 .gutter-row {
   padding: 12px;
 }
-
+.movieCard img{
+  display: block;
+  width: 100%;
+}
 .card-body {
   padding: 10px 16px;
 }
@@ -94,13 +125,75 @@ body {
 .ant-card-body .ant-card-meta-description {
     color: #f2e9e1;
 }
-.ant-card-meta-title{
+.courseList {
+  display: flex;
+  max-width: 82%;
+  margin: 0 auto;
+  padding: 50px 0px;
+  justify-content: center;
+}
+.courseList .ant-col {
+  width: auto;
+  max-width: initial;
+}
+.courseDetail {
+  max-width: 100%;
+  margin: 5px;
+  background-color: #fafafa;
+  padding: 5%; 
+}
+.courseList .ant-card-bordered{
+  border: 3px solid #637817;
+  border-radius: 6px;
+}
+.courseList .ant-card-bordered:hover {
+  box-shadow: 0px 0px 30px rgba(0,0,0,0.9);
+  border-color: #fff;
+}
+.courseList .ant-card-body {
+  padding: 20px 10px;
+  background-color: #708a15;
+  text-align: center;
+}
+.ant-card-meta-title {
   font-weight: 900;
   font-size: 14px;
 }
-.ant-card-meta-title ~.ant-card-meta-description{
+.ant-card-meta-title ~.ant-card-meta-description {
   font-size: 12px;
 }
+.courseDetail .ant-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+.courseDetail .ant-row .ant-col {
+  padding: 10px;
+}
+.courseDetail .ant-row .ant-col:last-child {
+  text-align: left;
+}
+.courseDetail .ant-row .ant-col:last-child h1{
+  font-weight: 900;
+  color: #708a15;
+}
+.courseDetail .ant-row .ant-col:last-child hr{
+  border: 1px solid #3c3838;
+}
+/* .courseDetail .ant-row .ant-col:last-child .ant-btn{
+  border: none;
+  margin-top: 20px;
+  padding: 0 30px;
+} */
+.courseDetail-header h1 {
+  color: #f2e9e1;
+  text-align: left;
+}
+
+.upload-actions {
+  text-align: center;
+  margin-top: 12px;
+}
+
 .ant-card-cover img {
-    height: 300px;
+    height: 250px;
 }

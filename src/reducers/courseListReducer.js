@@ -1,4 +1,10 @@
-import { FETCH_START, FETCH_COURSES, CLEAR_COURSES, COURSES_ERROR } from '../actions/actionTypes';
+import { 
+  FETCH_START, 
+  FETCH_COURSES, 
+  CLEAR_COURSES, 
+  COURSES_ERROR,
+  ADD_COURSE
+} from '../actions/actionTypes';
 
 const initialData = {
   status: 'default',
@@ -11,6 +17,9 @@ const courseListReducer = (state = initialData, action) => {
       return { ...state, status: 'loading' };
 
     case FETCH_COURSES:
+      return { ...state, status: 'completed', courses: action.payload };
+
+    case ADD_COURSE:
       return { ...state, status: 'completed', courses: action.payload };
     
     case COURSES_ERROR:

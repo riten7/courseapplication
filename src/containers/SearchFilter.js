@@ -1,17 +1,18 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchText } from '../actions/actionCreators';
+import { setSearchText, addCourseToList } from '../actions/actionCreators';
 import { Col, Input, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import AddCourse from './AddCourse';
 
 const SearchFilter = () => {
-  const [popupDisplay, setPopupDisplay] = useState(false);
+  const [addCourseVisible, showAddCourse] = useState(false);
   const dispatch = useDispatch();
   const { status } = useSelector(state => state.courseList);
 
   useEffect(() => {
     if (status === 'completed') {
-      setPopupDisplay(false);
+      showAddCourse(false);
     }
   }, [status]);
 
@@ -19,7 +20,11 @@ const SearchFilter = () => {
     dispatch(setSearchText(e.target.value));
   }, [dispatch]);
 
-  const setPopupState = (value) => setPopupDisplay(value);
+  const handleAddCourseBtn = (value) => showAddCourse(value);
+
+  const handleCourse = (values) => {
+    dispatch(addCourseToList(values));
+  }
 
   return (
     <>
@@ -29,11 +34,14 @@ const SearchFilter = () => {
             onChange={handleInputChange} />
         </Col>
         <Col>
-          <Button className="addCourseBtn" type="primary" onClick={setPopupState}><PlusOutlined /></Button>
-          <p>Create Course </p>
+          <Button className="addCourseBtn" type="primary" onClick={handleAddCourseBtn}><PlusOutlined /></Button>
+          <p>Create Course</p>
         </Col>
       </div>
-      {popupDisplay ? console.log(popupDisplay) : null}
+      {addCourseVisible ?
+        <AddCourse
+          handleCourse={handleCourse}
+          showAddCourse={showAddCourse} /> : null}
     </>
   );
 }

@@ -5,10 +5,14 @@ export const getFilteredList = (courses, searchType, searchText) => {
         return courses;
       case SEARCH_FILTER:
         return courses.flat().filter(item => {
-          let title = item.title.toLowerCase();
-          return title.indexOf(searchText.toLowerCase()) > -1;
+          let name = item.name.toLowerCase();
+          return name.indexOf(searchText.toLowerCase()) > -1;
         });
       default:
         return courses;
     }
-  }
+}
+
+export const checkForDuplicates = (array, keyName) => {
+  return new Set(array.map(item => item[keyName])).size !== array.length
+}
