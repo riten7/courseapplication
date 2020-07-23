@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Form, Input, Button, Select, DatePicker } from 'antd';
 import moment from 'moment';
 
-const layout = { labelCol: { span: 6 }, wrapperCol: {span: 16 },};
+const layout = { labelCol: { span: 6 }, wrapperCol: {span: 16 }};
 const tailLayout = { wrapperCol: { offset: 16 }};
 
 const AddCourse = (props) => {

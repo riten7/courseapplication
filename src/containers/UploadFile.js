@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Upload, Form, Button, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
-import { checkForDuplicates } from '../utils/filter';
+import { checkForDuplicates } from '../utils/utility';
 import AlertMessage from './AlertMessage';
 
 const UploadFile = (props) => {
@@ -22,7 +22,7 @@ const UploadFile = (props) => {
       message.error('You can only upload maximum 5 files!');
       return;
     }
-    setError(isDuplicateFileAvailable([...e.fileList, ...props.files]))
+    setError(isDuplicateFileAvailable(e.fileList));
     setSelectedFiles(e.fileList);
     return e && e.fileList;
   };

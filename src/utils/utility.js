@@ -1,25 +1,29 @@
-export const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Size',
-    dataIndex: 'size',
-    key: 'size',
-  },
-  {
-    title: 'File Type',
-    dataIndex: 'type',
-    key: 'type',
-  },
-  {
-    title: 'Created Date',
-    dataIndex: 'date',
-    key: 'date',
-  }, 
-];
+import moment from 'moment';
+import { SHOW_ALL, SEARCH_FILTER } from '../actions/actionTypes';
+
+export const BASE_URL = 'https://courseservice.herokuapp.com/'; //'http://localhost:9000/';
+
+export const getDate = (date) => {
+  return moment(date).format("dddd, MMMM Do YYYY");
+}
+
+export const getFilteredList = (courses, searchType, searchText) => {
+    switch (searchType) {
+      case SHOW_ALL:
+        return courses;
+      case SEARCH_FILTER:
+        return courses.flat().filter(item => {
+          let name = item.name.toLowerCase();
+          return name.indexOf(searchText.toLowerCase()) > -1;
+        });
+      default:
+        return courses;
+    }
+}
+
+export const checkForDuplicates = (array, keyName) => {
+  return new Set(array.map(item => item[keyName])).size !== array.length
+}
 
 export const bytesToSize = (bytes) => {
     var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];

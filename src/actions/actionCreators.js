@@ -10,7 +10,7 @@ import {
   UPDATE_COURSE,
   DELETE_COURSE,
 } from './actionTypes';
-import { BASE_URL } from './Constant';
+import { BASE_URL } from '../utils/utility';
 
 export const clearCourseList = () => ({
   type: CLEAR_COURSES
@@ -61,19 +61,30 @@ export const updateCourseInList = (data, id) => {
   return async dispatch => {
     dispatch({ type: FETCH_START });
     try {
-      // const formData = new FormData();
-      // formData.append('id', id);
-      // formData.append('name', data.name);
-      // formData.append("author", data.author);
-      // formData.append("date", data.date);
-      // formData.append("description", data.description)
-      // formData.append("level", data.level)
-      // formData.append("type", data.type);
-      // console.log('tetetetetete', data.files);
-      // data.files.forEach((file) => {
-      //  file.originFileObj && formData.append('files', file.originFileObj);
-      // });
       const response = await axios.put(BASE_URL + "updateCourse/" + id, data);
+      dispatch({ type: UPDATE_COURSE, payload: response.data });
+    } catch {
+      dispatch({ type: COURSES_ERROR })
+    }
+  }
+}
+
+export const updateCourseFilesInList = (data, id) => {
+  return async dispatch => {
+    dispatch({ type: FETCH_START });
+    try {
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append("author", data.author);
+      formData.append("date", data.date);
+      formData.append("description", data.description)
+      formData.append("level", data.level)
+      formData.append("type", data.type);
+      formData.append("fileList", JSON.stringify(data.files));
+      data.updatedFiles.forEach((file) => {
+       formData.append('file', file.originFileObj);
+      });
+      const response = await axios.put(BASE_URL + "updateCourseFiles/" + id, formData);
       dispatch({ type: UPDATE_COURSE, payload: response.data });
     } catch {
       dispatch({ type: COURSES_ERROR })
@@ -92,3 +103,15 @@ export const deleteCourseFromList = (id) => {
     }
   }
 }
+
+// export const deleteFileFromCourse = (courseId, fileId) => {
+//   return async dispatch => {
+//     dispatch({ type: FETCH_START });
+//     try {
+//       await axios.delete(BASE_URL + "deleteFile/" + courseId + "/" + fileId);
+//       //dispatch({ type: DELETE_COURSE });
+//     } catch {
+//       dispatch({ type: COURSES_ERROR })
+//     }
+//   }
+// }
