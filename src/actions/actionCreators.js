@@ -10,7 +10,10 @@ import {
   UPDATE_COURSE,
   DELETE_COURSE,
 } from './actionTypes';
-import { BASE_URL } from '../utils/utility';
+
+import API from '../services/APIService';
+
+const api = new API({});
 
 export const clearCourseList = () => ({
   type: CLEAR_COURSES
@@ -25,8 +28,8 @@ export const fetchCourseList = () => {
   return async dispatch => {
     dispatch({ type: FETCH_START });
     try {
-      const response = await axios.get(BASE_URL + 'getAllCourses');
-      dispatch({ type: FETCH_COURSES, payload: response.data });
+      const response = await api.get('getAllCourses');
+      dispatch({ type: FETCH_COURSES, payload: response });
     } catch {
       dispatch({ type: COURSES_ERROR });
     }
@@ -37,8 +40,8 @@ export const addCourseToList = (data) => {
   return async dispatch => {
     dispatch({ type: FETCH_START });
     try {
-      const response = await axios.post(BASE_URL + "insertCourse", data);
-      dispatch({ type: ADD_COURSE, payload: response.data })
+      const response = await api.post('insertCourse', data);
+      dispatch({ type: ADD_COURSE, payload: response })
     } catch {
       dispatch({ type: COURSES_ERROR });
     }
@@ -49,8 +52,8 @@ export const getCourseDetailById = (id) => {
   return async dispatch => {
     dispatch({ type: FETCH_START });
     try {
-      const response = await axios.get(BASE_URL + "getCourse/" + id);
-      dispatch({ type: FETCH_COURSE_DETAIL, payload: response.data });
+      const response = await api.get('getCourse/' + id);
+      dispatch({ type: FETCH_COURSE_DETAIL, payload: response });
     } catch {
       dispatch({ type: COURSES_ERROR });
     }
@@ -61,8 +64,8 @@ export const updateCourseInList = (data, id) => {
   return async dispatch => {
     dispatch({ type: FETCH_START });
     try {
-      const response = await axios.put(BASE_URL + "updateCourse/" + id, data);
-      dispatch({ type: UPDATE_COURSE, payload: response.data });
+      const response = await api.put('updateCourse/' + id, data);
+      dispatch({ type: UPDATE_COURSE, payload: response });
     } catch {
       dispatch({ type: COURSES_ERROR })
     }
@@ -82,10 +85,10 @@ export const updateCourseFilesInList = (data, id) => {
       formData.append("type", data.type);
       formData.append("fileList", JSON.stringify(data.files));
       data.updatedFiles.forEach((file) => {
-       formData.append('file', file.originFileObj);
+       formData.append('file', file.file);
       });
-      const response = await axios.put(BASE_URL + "updateCourseFiles/" + id, formData);
-      dispatch({ type: UPDATE_COURSE, payload: response.data });
+      const response = await api.put('updateCourseFiles/' + id, formData);
+      dispatch({ type: UPDATE_COURSE, payload: response });
     } catch {
       dispatch({ type: COURSES_ERROR })
     }
@@ -96,7 +99,7 @@ export const deleteCourseFromList = (id) => {
   return async dispatch => {
     dispatch({ type: FETCH_START });
     try {
-      await axios.delete(BASE_URL + "deleteCourse/" + id);
+      await axios.delete('deleteCourse/' + id);
       dispatch({ type: DELETE_COURSE });
     } catch {
       dispatch({ type: COURSES_ERROR })

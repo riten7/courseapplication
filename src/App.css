@@ -15,157 +15,22 @@ body {
 .spinner {
   padding: 15%
 }
-.courseSearch {
-  background-color: #3c3838;
-  padding: 24px;
-  min-height: 160px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-}
-.search-form {
-  display: flex;
-  max-width: 65%;
-  margin: 0 auto;
-  width: 100%;
-}
-.search-form .ant-col:first-child {
-  width: 100%;
-}
-.search-form .ant-col:last-child {
-  width: 150px;
-}
-.search-form .ant-col:last-child .addCourseBtn {
-  min-height: auto;
-  margin: 0 10px;
-  background-color: #708a15;
-  font-size: 32px;
-  border-radius: 50%;
-  height: 60px;
-  width: 60px;
-}
-.search-form .ant-col:first-child input,
-.search-form .ant-col:last-child button{
-  border: none;
-}
-.search-form .ant-col:first-child input:focus,
-.search-form .ant-col:last-child button:focus {
-  outline: none;
-  border: none;
-  box-shadow: none;
-}
-.search-form .ant-col:first-child p{
-  text-align: left;
-  font-size: 16px;
-  color: #888585;
-  padding: 10px 0 0 20px;
-  margin: 0;
-  font-weight: 300;
-}
-.search-form .ant-col:first-child input:focus{
-  background-color: #fff;
-  color: #696565;
-}
-.courseSearch .searchInput {
-  background-color: #696565;
-  color: #f2e9e1;
-  min-height: 60px;
-  border-radius: 30px;
-  padding: 0px 30px;
-  font-size: 18px;
-  font-weight: 300;
-}
+
 .courseDetail .addFileBtn {
   float: right;
   margin-top: 0 !important; 
 }
-.actions-course {
-  margin-top: 30px;
-}
-.courseSearch .addCourseBtn,
-.courseDetail .editCourseBtn,
-.courseDetail .deleteCourseBtn,
-.courseDetail .goBackBtn,
-.courseDetail .addFileBtn {
-  background-color: #708b16;
-  color: #f2e9e1;
-  border-radius: 0.5em;
-  min-height: 20px;
-  margin: 0 12px;
-  width: 25%;
-}
+/* 
 .courseDetail-info > * {
   color: #f2e9e1;
   text-align: left;
   margin: 10px;
-}
-.ant-btn {
-  margin: 2px;
-}
-.gutter-row {
-  padding: 12px;
-}
-.card-body {
-  padding: 10px 16px;
-}
-.card-body p {
-  color: #999;
-}
-.ant-card-body {
-  padding: 10px;
-  background-color: #708a14;
-  text-align: center;
-}
-.ant-card-body .ant-card-meta-title,
-.ant-card-body .ant-card-meta-description {
-    color: #f2e9e1;
-}
-.courseList {
-  display: flex;
-  max-width: 82%;
-  margin: 0 auto;
-  padding: 50px 0px;
-  justify-content: center;
-}
-.courseList .ant-col {
-  width: auto;
-  max-width: initial;
-}
+} */
 .courseDetail {
   max-width: 100%;
   margin: 5px;
   background-color: #fafafa;
   padding: 5%; 
-}
-.courseList .ant-card-bordered{
-  border: 3px solid #637817;
-  border-radius: 6px;
-}
-.courseList .ant-card-bordered:hover {
-  box-shadow: 0px 0px 30px rgba(0,0,0,0.9);
-  border-color: #fff;
-}
-.courseList .ant-card-body {
-  padding: 20px 10px;
-  background-color: #708a15;
-  text-align: center;
-}
-.ant-card-meta-title {
-  font-weight: 900;
-  font-size: 14px;
-}
-.ant-card-meta-title ~.ant-card-meta-description {
-  font-size: 12px;
-}
-.courseDetail .ant-row {
-  display: flex;
-  flex-flow: row wrap;
-}
-.courseDetail .ant-row .ant-col {
-  padding: 10px;
-}
-.courseDetail .ant-row .ant-col:last-child {
-  text-align: left;
 }
 .courseDetail .ant-row .ant-col:last-child h1{
   font-weight: 900;
@@ -174,22 +39,15 @@ body {
 .courseDetail .ant-row .ant-col:last-child hr{
   border: 1px solid #3c3838;
 }
-/* .courseDetail .ant-row .ant-col:last-child .ant-btn{
-  border: none;
-  margin-top: 20px;
-  padding: 0 30px;
-} */
-.courseDetail-header h1 {
+/* .courseDetail-header h1 {
   color: #f2e9e1;
   text-align: left;
-}
+} */
 .upload-actions {
   text-align: center;
   margin-top: 12px;
 }
-.ant-card-cover img {
-    height: 250px;
-}
+
 .courseError {
   padding: 15%;
 }

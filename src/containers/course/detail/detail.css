@@ -1,0 +1,19 @@
+.courseDetail-info img {
+  width: 300px;
+  height: 300px;
+}
+
+.courseDetail .ant-card-bordered {
+  border: none;
+}
+
+.courseDetail h1,
+.courseDetail h2,
+.courseDetail .ant-row {
+  text-align: left;
+  color: #f2e9e1;
+}
+
+.course--files {
+  padding: 30px;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import CourseList from './containers/CourseList';
-import CourseDetail from './containers/CourseDetail';
+import CourseList from './containers/course/CourseList';
+import CourseDetail from './containers/course/detail/CourseDetail';
 import './App.css';
 
 function App() {

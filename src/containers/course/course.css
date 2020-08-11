@@ -1,0 +1,45 @@
+.courseItem {
+  display: inline-block;
+  padding: 50px 10px;
+  justify-content: center;
+}
+
+.courseItem .ant-card-bordered {
+  border: 3px solid #637817;
+  border-radius: 6px;
+}
+
+.courseItem .ant-card-bordered:hover {
+  box-shadow: 0px 0px 10px rgba(240, 244, 242, 0.9);
+  border-color: #fff;
+}
+
+.courseItem .ant-card-body {
+  padding: 20px 10px;
+  background-color: #708a15;
+  text-align: center;
+}
+
+.ant-card-cover img {
+    height: 250px;
+    width: 240px;
+}
+
+.ant-card-body {
+  padding: 14px;
+  background-color: #708a14;
+  text-align: center;
+}
+
+.ant-card-body .ant-card-meta-title,
+.ant-card-body .ant-card-meta-description {
+    color: #f2e9e1;
+}
+
+.ant-card-body .ant-card-meta-title {
+  font-size: 14px;
+}
+
+.ant-card-meta-title ~.ant-card-meta-description {
+  font-size: 12px;
+}

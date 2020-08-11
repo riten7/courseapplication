@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Upload, Form, Button, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { checkForDuplicates } from '../utils/utility';
-import AlertMessage from './AlertMessage';
+import AlertMessage from '../components/Message/AlertMessage';
 
 const UploadFile = (props) => {
   const [error, setError] = React.useState(false);
@@ -38,7 +38,7 @@ const UploadFile = (props) => {
 
   return (
     <Modal
-      title= 'Upload Files'
+      title= 'Add Files'
       visible={props.show}
       mask={true}
       maskClosable={false}

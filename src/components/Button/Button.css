@@ -1,0 +1,12 @@
+  .ant-btn.courseBtn {
+    background-color: #708a15;
+    color: #f2e9e1;
+    border-radius: 0.5em;
+    min-height: 20px;
+    margin: 2px;
+    width: auto;
+  }
+
+  .ant-btn.courseBtn:hover {
+    color: #708a15;
+  }
