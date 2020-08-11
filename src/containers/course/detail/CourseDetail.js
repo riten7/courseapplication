@@ -17,7 +17,8 @@ import ErrorMessage from '../../../components/Message/ErrorMessage';
 import {
   getCourseDetailById,
   updateCourseInList,
-  updateCourseFilesInList
+  updateCourseFilesInList,
+  deleteCourseFromList
 } from '../../../actions/actionCreators';
 import { coursetypes, courselevels } from '../courseContant';
 import CourseInfo from './CourseInfo';
@@ -58,7 +59,7 @@ const CourseDetail = (props) => {
 
   const handleDeleteCourse = () => {
     setShowConfirmation(false);
-    //dispatch(deleteCourseFromList(courseId));
+    dispatch(deleteCourseFromList(courseId));
   };
 
   const fileUploadHandler = (fileList) => {
@@ -70,14 +71,14 @@ const CourseDetail = (props) => {
     dispatch(updateCourseFilesInList(updatedCourse, courseId));
   }
 
-  const handleDeleteFile = (file) => {
-    const updatedCourse = {
-      ...course,
-      files: course.files.filter(item => item.id !== file.id),
-    };
-    delete updatedCourse._id;
-    dispatch(updateCourseInList(updatedCourse, courseId));
-  }
+  // const handleDeleteFile = (file) => {
+  //   const updatedCourse = {
+  //     ...course,
+  //     files: course.files.filter(item => item.id !== file.id),
+  //   };
+  //   delete updatedCourse._id;
+  //   dispatch(updateCourseInList(updatedCourse, courseId));
+  // }
 
   return (
     <div className="courseDetail">

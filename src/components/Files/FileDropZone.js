@@ -6,7 +6,6 @@ import {
   getFileNameWithoutExtension,
   findDuplicateNames,
   validTypes,
-  bytesToSize
 } from '../../utils/utility';
 
 import './FileDropzone.css';
